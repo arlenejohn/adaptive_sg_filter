@@ -16,22 +16,15 @@ p=3; % general order used
 %%%% loading the signal (here a clean signal is loaded and noise is added
 %%%% to it. However, in real-life scenarios, the signal is just loaded here
 
-load('aami3am.mat')
-s=val;
-y1=s(1:2048);
+load('aami3am_noisy_L.mat')
+y1=noisy;
 
 %%% normalize the signal
 y1=y1-mean(y1);
 sig=y1/max(abs(y1)); %normalizing the signal
 noisy=sig;
 
-
-%% optional noise addition stage. The noises being added can be gaussian 'G', Laplacian 'L', or Uniform 'U'
-%% if noise is not being added, specify type of noise for denoising
-
-SNR=15;
-type='L';
-noisy=add_noise_2(sig,SNR,type); 
+%OR JUST LOAD THE NOISY SIGNAL
 
      
 %% SG-filter based Denoising
@@ -46,22 +39,6 @@ type='L'; %specify noist type as gaussian, laplacian, or uniform for sigma estim
 %[denoised_signal,window_order] = den_ord(M,pmax,noisy,type); %order varying denoising (G-O)
 [denoised_signal,window_order] = den_ord_reg(M,pmax,noisy,type);%regularized order varying denoising(G-O-R)
 
-%%%%%%% plotting when clean signal is available
-figure
-subplot(3,1,1)
-plot(noisy,'k')
-legend('noisy','clean')
-grid on
-subplot(3,1,2)
-plot(denoised_signal,'k')
-hold on
-plot(sig,'r')
-legend('denoise','clean')
-grid on
-subplot(3,1,3)
-plot(window_order,'m')
-legend('order/window')
-grid on
 
 %%%%% plotting when the clean signal is not available
 figure
@@ -70,10 +47,10 @@ plot(noisy,'k')
 legend('noisy/ input')
 grid on
 subplot(3,1,2)
-plot(denoised_signal,'r')
-hold on
 plot(noisy,'k')
-legend('denoised','noisy/ input')
+hold on
+plot(denoised_signal,'r')
+legend('noisy/ input','denoised')
 grid on
 subplot(3,1,3)
 plot(window_order,'m')
