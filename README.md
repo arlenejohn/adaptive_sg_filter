@@ -12,3 +12,5 @@ G-O: den_ord is the function that executes the G-O algorithm or the order adapti
 G-O-R: den_ord_reg is the function that executes the G-O-R algorithm or the order adaptive SG filter with fixed window length and regularization. It calculates the risk estimate using the Find_risk_ord_reg function and the standard deviation estimate using the sigma_estimate function.
 
 The aami3am.mat file is a clean ecg signal and the aami3am_noisy_L.mat file is the noisy ecg signal with noisy laplacian noise added to it, which is included for demonstrative purposes.
+
+Please cite this work when using this code in the repository: A. John, J. Sadasivan and C. S. Seelamantula, "Adaptive Savitzky-Golay Filtering in Non-Gaussian Noise," in IEEE Transactions on Signal Processing, vol. 69, pp. 5021-5036, 2021, doi: 10.1109/TSP.2021.3106450.
