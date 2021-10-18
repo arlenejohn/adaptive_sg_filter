@@ -1,6 +1,5 @@
-%% SG filtering Example PRogram
+%% Adaptive SG filtering Example Program
 
-%% First Install Wavelab850 toolbox PResent in  the folder SG_Filtering
 
 clear all
 close all
